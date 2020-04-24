@@ -3,6 +3,7 @@
 
 #include "C1_1_DisplayPicture.h"
 #include "C1_2_DisplayVideo.h"
+#include "C1_3_MovingAround.h"
 
 ConsoleMenu* ConsoleMenu::_instance = NULL;
 HANDLE ConsoleMenu::_console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -18,6 +19,7 @@ MENU ConsoleMenu::_chapters[] = {
 MENU ConsoleMenu::_chapter1[] = {
 	{true, "Display a picture", TestDisplayPicture, false, NULL, ConsoleMenu::_chapters},
 	{true, "Display a video", TestDisplayVideo, false, NULL, ConsoleMenu::_chapters},
+	{true, "Moving Around", TestMovingAround, false, NULL, ConsoleMenu::_chapters},
 	{false, "unused", NULL, false, NULL, NULL}
 };
 
@@ -40,6 +42,7 @@ ConsoleMenu* ConsoleMenu::GetInstance()
 ConsoleMenu::ConsoleMenu()
 {
 	mIsExit = false;
+	mIsActive = true;
 	mIndex = 0;
 	mTotal = GetMenuLength(ConsoleMenu::_chapters);
 	mMenu = ConsoleMenu::_chapters;
@@ -48,7 +51,10 @@ ConsoleMenu::ConsoleMenu()
 
 void ConsoleMenu::Update()
 {
-	UpdateKey();
+	if (mIsActive)
+	{
+		UpdateKey();
+	}
 }
 
 void ConsoleMenu::UpdateKey()
@@ -91,6 +97,7 @@ void ConsoleMenu::UpdateKey()
 	case 13:
 	{
 		// ENTER
+		mIsActive = false;
 		int errorCode = Action();
 		if (errorCode != 0)
 		{
@@ -175,16 +182,20 @@ void ConsoleMenu::RenderMenuItem(MENU item, int deep, bool selected)
 
 int ConsoleMenu::Action()
 {
+	int errorCode = 0;
 	if (mMenu[mIndex].func != NULL)
 	{
-		return mMenu[mIndex].func();
+		errorCode = mMenu[mIndex].func();
+	}
+	else
+	{
+		SetColor(0, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+		cout << "You clicked " << mMenu[mIndex].text << endl;
+		SetColor(0, 15);
 	}
 
-	SetColor(0, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-	cout << "You clicked " << mMenu[mIndex].text << endl;
-	SetColor(0, 15);
-
-	return 0;
+	mIsActive = true;
+	return errorCode;
 }
 
 int ConsoleMenu::GetKey(int& speckey)

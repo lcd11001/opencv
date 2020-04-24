@@ -27,6 +27,9 @@
     <ClCompile Include="C1_2_DisplayVideo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C1_3_MovingAround.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleMenu.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C1_2_DisplayVideo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C1_3_MovingAround.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

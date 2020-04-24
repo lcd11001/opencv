@@ -146,12 +146,14 @@
   <ItemGroup>
     <ClCompile Include="C1_1_DisplayPicture.cpp" />
     <ClCompile Include="C1_2_DisplayVideo.cpp" />
+    <ClCompile Include="C1_3_MovingAround.cpp" />
     <ClCompile Include="ConsoleMenu.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C1_1_DisplayPicture.h" />
     <ClInclude Include="C1_2_DisplayVideo.h" />
+    <ClInclude Include="C1_3_MovingAround.h" />
     <ClInclude Include="ConsoleMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

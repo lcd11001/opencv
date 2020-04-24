@@ -48,6 +48,8 @@ private:
 
 private:
 	bool mIsExit;
+	bool mIsActive;
+
 	int mIndex;
 	int mTotal;
 	bool mRefresh;
