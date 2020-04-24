@@ -5,7 +5,7 @@
 
 using namespace std;
 
-typedef void (*MENU_FUNCTION_POINTER)();
+typedef int (*MENU_FUNCTION_POINTER)();
 
 typedef struct _MENU MENU;
 typedef MENU* MENU_POINTER;
@@ -36,13 +36,13 @@ private:
 	
 	int GetKey(int& speckey);
 	int GetMenuLength(MENU_POINTER menu);
-	void ShowChildMenu(int index);
-	void HideChildMenu(int index);
+	int ShowChildMenu(int index);
+	int HideChildMenu(int index);
 	void SetColor(int bg, int fg);
 	
 	void Render();
-	void RenderMenu(MENU_POINTER menu);
-	void RenderMenuItem(MENU item);
+	void RenderMenu(MENU_POINTER menu, int deep);
+	void RenderMenuItem(MENU item, int deep, bool selected);
 
 private:
 	bool mIsExit;
@@ -56,5 +56,8 @@ private:
 private:
 	static ConsoleMenu* _instance;
 	static HANDLE _console;
+	static MENU _chapters[];
+	static MENU _chapter1[];
+	static MENU _chapter2[];
 };
 

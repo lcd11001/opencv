@@ -4,6 +4,39 @@
 ConsoleMenu* ConsoleMenu::_instance = NULL;
 HANDLE ConsoleMenu::_console = GetStdHandle(STD_OUTPUT_HANDLE);
 
+int Example1()
+{
+	cout << "Example 1" << endl;
+	return 0;
+}
+
+int Example2()
+{
+	cout << "Example 2" << endl;
+	return 0;
+}
+
+MENU ConsoleMenu::_chapters[] = {
+	{true, "Chapter 1", NULL, false, ConsoleMenu::_chapter1, NULL},
+	{true, "Chapter 2", NULL, false, ConsoleMenu::_chapter2, NULL},
+	{true, "Chapter 3", NULL, false, NULL, NULL},
+	{true, "Chapter 4", NULL, false, NULL, NULL},
+	{false, "unused", NULL, false, NULL, NULL}
+};
+
+MENU ConsoleMenu::_chapter1[] = {
+	{true, "Example 1.1", Example1, false, NULL, ConsoleMenu::_chapters},
+	{true, "Example 1.2", Example2, false, NULL, ConsoleMenu::_chapters},
+	{false, "unused", NULL, false, NULL, NULL}
+};
+
+MENU ConsoleMenu::_chapter2[] = {
+	{true, "Example 2.1", NULL, false, NULL, ConsoleMenu::_chapters},
+	{true, "Example 2.2", NULL, false, NULL, ConsoleMenu::_chapters},
+	{true, "Example 2.3", NULL, false, NULL, ConsoleMenu::_chapters},
+	{false, "unused", NULL, false, NULL, NULL}
+};
+
 ConsoleMenu* ConsoleMenu::GetInstance()
 {
 	if (_instance == NULL)
@@ -17,8 +50,8 @@ ConsoleMenu::ConsoleMenu()
 {
 	mIsExit = false;
 	mIndex = 0;
-	mTotal = 0;
-	mMenu = NULL;
+	mTotal = GetMenuLength(ConsoleMenu::_chapters);
+	mMenu = ConsoleMenu::_chapters;
 	mRefresh = true;
 }
 
@@ -41,21 +74,27 @@ void ConsoleMenu::UpdateKey()
 	case 80:
 		// DOWN
 		mIndex = (mIndex + 1) % mTotal;
+		mRefresh = true;
 		break;
 
 	case 72:
 		// UP
 		mIndex = (mTotal + (mIndex - 1) % mTotal) % mTotal;
+		mRefresh = true;
 		break;
 
 	case 77:
 		// RIGHT
-		ShowChildMenu(mIndex);
+		mIndex = ShowChildMenu(mIndex);
+		mTotal = GetMenuLength(mMenu);
+		mRefresh = true;
 		break;
 
 	case 75:
 		// LEFT
-		HideChildMenu(mIndex);
+		mIndex = HideChildMenu(mIndex);
+		mTotal = GetMenuLength(mMenu);
+		mRefresh = true;
 		break;
 
 	case 27:
@@ -73,21 +112,61 @@ void ConsoleMenu::Render()
 	if (mRefresh)
 	{
 		mRefresh = false;
-		RenderMenu(mMenu);
+
+		// clear console screen
+		system("cls");
+
+		RenderMenu(ConsoleMenu::_chapters, 0);
 	}
 }
 
-void ConsoleMenu::RenderMenu(MENU_POINTER menu)
+void ConsoleMenu::RenderMenu(MENU_POINTER menu, int deep)
 {
-	SetColor(BACKGROUND_RED, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+	if (menu == NULL)
+	{
+		return;
+	}
 
-	cout << "Menu" << endl;
+	int i = 0;
+	while (/*menu[i] != NULL &&*/ menu[i].isValid)
+	{
+		RenderMenuItem(menu[i], deep, i == mIndex && mMenu == menu);
+		if (menu[i].isOpen && menu[i].childMenu != NULL)
+		{
+			RenderMenu(menu[i].childMenu, deep + 1);
+		}
 
-	SetColor(0, 7);
+		i++;
+	}
 }
 
-void ConsoleMenu::RenderMenuItem(MENU item)
+void ConsoleMenu::RenderMenuItem(MENU item, int deep, bool selected)
 {
+	if (selected)
+	{
+		// bg: red
+		// fg: light yellow
+		SetColor(BACKGROUND_RED, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+	}
+
+	const int tab = 4;
+	for (int i = 0; i < tab * deep; i++)
+	{
+		cout << " ";
+	}
+
+	string prefix = " ";
+	if (item.childMenu != NULL)
+	{
+		prefix = item.isOpen ? "-" : "+";
+	}
+
+	cout << prefix << item.text << endl;
+
+	// reset to default color
+	// bg: black
+	// fg: white
+	SetColor(0, 15);
 }
 
 int ConsoleMenu::GetKey(int& speckey)
@@ -112,12 +191,35 @@ int ConsoleMenu::GetMenuLength(MENU_POINTER menu)
 	return len;
 }
 
-void ConsoleMenu::ShowChildMenu(int index)
+int ConsoleMenu::ShowChildMenu(int index)
 {
+	if (mMenu[index].childMenu != NULL)
+	{
+		mLastIndex.push(index);
+
+		mMenu[index].isOpen = true;
+		mMenu = mMenu[index].childMenu;
+
+		return 0;
+	}
+
+	return index;
 }
 
-void ConsoleMenu::HideChildMenu(int index)
+int ConsoleMenu::HideChildMenu(int index)
 {
+	if (mMenu[index].parent != NULL)
+	{
+		mMenu = mMenu[index].parent;
+
+		int prevIndex = mLastIndex.top();
+		mMenu[prevIndex].isOpen = false;
+
+		mLastIndex.pop();
+		return prevIndex;
+	}
+
+	return index;
 }
 
 void ConsoleMenu::SetColor(int bg, int fg)
