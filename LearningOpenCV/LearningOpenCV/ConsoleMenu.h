@@ -44,6 +44,8 @@ private:
 	void RenderMenu(MENU_POINTER menu, int deep);
 	void RenderMenuItem(MENU item, int deep, bool selected);
 
+	int Action();
+
 private:
 	bool mIsExit;
 	int mIndex;

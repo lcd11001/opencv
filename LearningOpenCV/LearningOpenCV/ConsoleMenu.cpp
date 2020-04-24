@@ -97,6 +97,11 @@ void ConsoleMenu::UpdateKey()
 		mRefresh = true;
 		break;
 
+	case 13:
+		// ENTER
+		Action();
+		break;
+
 	case 27:
 		// ESC
 		mIsExit = true;
@@ -142,17 +147,17 @@ void ConsoleMenu::RenderMenu(MENU_POINTER menu, int deep)
 
 void ConsoleMenu::RenderMenuItem(MENU item, int deep, bool selected)
 {
+	const int tab = 4;
+	for (int i = 0; i < tab * deep; i++)
+	{
+		cout << " ";
+	}
+
 	if (selected)
 	{
 		// bg: red
 		// fg: light yellow
 		SetColor(BACKGROUND_RED, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-	}
-
-	const int tab = 4;
-	for (int i = 0; i < tab * deep; i++)
-	{
-		cout << " ";
 	}
 
 	string prefix = " ";
@@ -167,6 +172,20 @@ void ConsoleMenu::RenderMenuItem(MENU item, int deep, bool selected)
 	// bg: black
 	// fg: white
 	SetColor(0, 15);
+}
+
+int ConsoleMenu::Action()
+{
+	if (mMenu[mIndex].func != NULL)
+	{
+		return mMenu[mIndex].func();
+	}
+
+	SetColor(0, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+	cout << "You clicked " << mMenu[mIndex].text << endl;
+	SetColor(0, 15);
+
+	return 0;
 }
 
 int ConsoleMenu::GetKey(int& speckey)
