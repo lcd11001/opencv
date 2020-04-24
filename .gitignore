@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Debug folder
+**/Debug
+
+# Release fodler
+**/Release
+
+# .vs folder
+**/.vs
