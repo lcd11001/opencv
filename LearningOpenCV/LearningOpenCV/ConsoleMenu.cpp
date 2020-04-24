@@ -2,21 +2,10 @@
 #include <conio.h>
 
 #include "C1_1_DisplayPicture.h"
+#include "C1_2_DisplayVideo.h"
 
 ConsoleMenu* ConsoleMenu::_instance = NULL;
 HANDLE ConsoleMenu::_console = GetStdHandle(STD_OUTPUT_HANDLE);
-
-int Example1()
-{
-	cout << "Example 1" << endl;
-	return 0;
-}
-
-int Example2()
-{
-	cout << "Example 2" << endl;
-	return 0;
-}
 
 MENU ConsoleMenu::_chapters[] = {
 	{true, "Chapter 1", NULL, false, ConsoleMenu::_chapter1, NULL},
@@ -28,7 +17,7 @@ MENU ConsoleMenu::_chapters[] = {
 
 MENU ConsoleMenu::_chapter1[] = {
 	{true, "Display a picture", TestDisplayPicture, false, NULL, ConsoleMenu::_chapters},
-	{true, "Example 1.2", Example2, false, NULL, ConsoleMenu::_chapters},
+	{true, "Display a video", TestDisplayVideo, false, NULL, ConsoleMenu::_chapters},
 	{false, "unused", NULL, false, NULL, NULL}
 };
 

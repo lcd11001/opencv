@@ -93,7 +93,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OPENCV_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_core430d.lib;opencv_highgui430d.lib;opencv_imgproc430d.lib;opencv_imgcodecs430d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_core430d.lib;opencv_highgui430d.lib;opencv_imgproc430d.lib;opencv_imgcodecs430d.lib;opencv_video430d.lib;opencv_videoio430d.lib;opencv_videostab430d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,7 +124,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OPENCV_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_core430.lib;opencv_highgui430.lib;opencv_imgproc430.lib;opencv_imgcodecs430.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_core430.lib;opencv_highgui430.lib;opencv_imgproc430.lib;opencv_imgcodecs430.lib;opencv_video430.lib;opencv_videoio430.lib;opencv_videostab430.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,11 +145,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="C1_1_DisplayPicture.cpp" />
+    <ClCompile Include="C1_2_DisplayVideo.cpp" />
     <ClCompile Include="ConsoleMenu.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C1_1_DisplayPicture.h" />
+    <ClInclude Include="C1_2_DisplayVideo.h" />
     <ClInclude Include="ConsoleMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
