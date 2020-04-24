@@ -1,6 +1,8 @@
 #include "ConsoleMenu.h"
 #include <conio.h>
 
+#include "C1_1_DisplayPicture.h"
+
 ConsoleMenu* ConsoleMenu::_instance = NULL;
 HANDLE ConsoleMenu::_console = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -25,7 +27,7 @@ MENU ConsoleMenu::_chapters[] = {
 };
 
 MENU ConsoleMenu::_chapter1[] = {
-	{true, "Example 1.1", Example1, false, NULL, ConsoleMenu::_chapters},
+	{true, "Display a picture", TestDisplayPicture, false, NULL, ConsoleMenu::_chapters},
 	{true, "Example 1.2", Example2, false, NULL, ConsoleMenu::_chapters},
 	{false, "unused", NULL, false, NULL, NULL}
 };
@@ -98,9 +100,17 @@ void ConsoleMenu::UpdateKey()
 		break;
 
 	case 13:
+	{
 		// ENTER
-		Action();
+		int errorCode = Action();
+		if (errorCode != 0)
+		{
+			SetColor(0, FOREGROUND_RED | FOREGROUND_INTENSITY);
+			cout << "errorCode " << errorCode << endl;
+			SetColor(0, 15);
+		}
 		break;
+	}
 
 	case 27:
 		// ESC

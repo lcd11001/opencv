@@ -21,9 +21,15 @@
     <ClCompile Include="ConsoleMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C1_1_DisplayPicture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C1_1_DisplayPicture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
