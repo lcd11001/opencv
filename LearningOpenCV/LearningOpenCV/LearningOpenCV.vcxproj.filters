@@ -33,6 +33,9 @@
     <ClCompile Include="C1_4_SimpleTransformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C1_5_PyramidDown.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleMenu.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ConsoleMenuConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C1_5_PyramidDown.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

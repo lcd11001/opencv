@@ -150,6 +150,7 @@
     <ClCompile Include="C1_4_SimpleTransformation.cpp" />
     <ClCompile Include="ConsoleMenu.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="C1_5_PyramidDown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C1_1_DisplayPicture.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="C1_4_SimpleTransformation.h" />
     <ClInclude Include="ConsoleMenu.h" />
     <ClInclude Include="ConsoleMenuConfig.h" />
+    <ClInclude Include="C1_5_PyramidDown.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
