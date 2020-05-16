@@ -7,15 +7,15 @@ int PyramidDown(cv::String name)
 	String nameWindow1 = "Example1";
 	String nameWindow2 = "Example2";
 
-	namedWindow(nameWindow1, WINDOW_AUTOSIZE);
-	namedWindow(nameWindow2, WINDOW_AUTOSIZE);
-
 	Mat img1, img2;
 	img1 = imread(name);
 	if (img1.empty())
 	{
 		return 1;
 	}
+
+	namedWindow(nameWindow1, WINDOW_AUTOSIZE);
+	namedWindow(nameWindow2, WINDOW_AUTOSIZE);
 
 	pyrDown(img1, img2);
 	

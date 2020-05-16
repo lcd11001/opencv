@@ -148,18 +148,20 @@
     <ClCompile Include="C1_2_DisplayVideo.cpp" />
     <ClCompile Include="C1_3_MovingAround.cpp" />
     <ClCompile Include="C1_4_SimpleTransformation.cpp" />
+    <ClCompile Include="C1_5_PyramidDown.cpp" />
+    <ClCompile Include="C1_6_EdgeDetector.cpp" />
     <ClCompile Include="ConsoleMenu.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="C1_5_PyramidDown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C1_1_DisplayPicture.h" />
     <ClInclude Include="C1_2_DisplayVideo.h" />
     <ClInclude Include="C1_3_MovingAround.h" />
     <ClInclude Include="C1_4_SimpleTransformation.h" />
+    <ClInclude Include="C1_5_PyramidDown.h" />
+    <ClInclude Include="C1_6_EdgeDetector.h" />
     <ClInclude Include="ConsoleMenu.h" />
     <ClInclude Include="ConsoleMenuConfig.h" />
-    <ClInclude Include="C1_5_PyramidDown.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -36,6 +36,9 @@
     <ClCompile Include="C1_5_PyramidDown.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C1_6_EdgeDetector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleMenu.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C1_5_PyramidDown.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C1_6_EdgeDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

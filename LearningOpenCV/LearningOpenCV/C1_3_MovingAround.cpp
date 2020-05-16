@@ -25,12 +25,12 @@ void onTrackbarSlide(int pos, void*)
 int MovingAround(cv::String name)
 {
 	const String windowName = "C1.3";
-	namedWindow(windowName, WINDOW_AUTOSIZE);
-
 	if (!g_cap.open(name))
 	{
 		return -1;
 	}
+
+	namedWindow(windowName, WINDOW_AUTOSIZE);
 
 	int frames = (int)g_cap.get(CAP_PROP_FRAME_COUNT);
 	int videoW = (int)g_cap.get(CAP_PROP_FRAME_WIDTH);

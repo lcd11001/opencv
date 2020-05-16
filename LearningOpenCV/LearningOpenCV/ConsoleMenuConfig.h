@@ -6,6 +6,7 @@
 #include "C1_3_MovingAround.h"
 #include "C1_4_SimpleTransformation.h"
 #include "C1_5_PyramidDown.h"
+#include "C1_6_EdgeDetector.h"
 
 MENU ConsoleMenu::_chapters[] = {
 	{true, "Chapter 1", NULL, false, ConsoleMenu::_chapter1, NULL},
@@ -21,6 +22,7 @@ MENU ConsoleMenu::_chapter1[] = {
 	{true, "Moving Around", TestMovingAround, false, NULL, ConsoleMenu::_chapters},
 	{true, "Simple Transformation", TestSimpleTransformation, false, NULL, ConsoleMenu::_chapters},
 	{true, "Pyramid Down Sample", TestPyramidDown, false, NULL, ConsoleMenu::_chapters},
+	{true, "Edge Detector", TestEdgeDetector, false, NULL, ConsoleMenu::_chapters},
 	{false, "unused", NULL, false, NULL, NULL}
 };
 

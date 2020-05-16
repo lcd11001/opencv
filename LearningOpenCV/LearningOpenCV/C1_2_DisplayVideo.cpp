@@ -5,13 +5,14 @@ using namespace cv;
 int DisplayVideo(cv::String name)
 {
 	const String windowName = "C1.2";
-	namedWindow(windowName, WINDOW_AUTOSIZE);
-
+	
 	VideoCapture cap;
 	if (!cap.open(name))
 	{
 		return -1;
 	}
+
+	namedWindow(windowName, WINDOW_AUTOSIZE);
 
 	Mat frame;
 	while (true)

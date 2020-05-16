@@ -7,14 +7,14 @@ int SimpleTransformation(cv::String name)
 	const String windowOutputName = "C1.4 out";
 	const String windowInputName = "C1.4 in";
 
-	namedWindow(windowInputName, WINDOW_AUTOSIZE);
-	namedWindow(windowOutputName, WINDOW_AUTOSIZE);
-
 	Mat image = imread(name);
 	if (image.empty())
 	{
 		return -1;
 	}
+
+	namedWindow(windowInputName, WINDOW_AUTOSIZE);
+	namedWindow(windowOutputName, WINDOW_AUTOSIZE);
 
 	Mat output;
 	GaussianBlur(image, output, Size(5, 5), 3, 3);
