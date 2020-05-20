@@ -42,6 +42,9 @@
     <ClCompile Include="C1_7_PixelColor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C1_8_CameraInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleMenu.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C1_7_PixelColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C1_8_CameraInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

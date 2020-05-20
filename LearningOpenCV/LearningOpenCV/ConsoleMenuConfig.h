@@ -8,6 +8,7 @@
 #include "C1_5_PyramidDown.h"
 #include "C1_6_EdgeDetector.h"
 #include "C1_7_PixelColor.h"
+#include "C1_8_CameraInput.h"
 
 MENU ConsoleMenu::_chapters[] = {
 	{true, "Chapter 1", NULL, false, ConsoleMenu::_chapter1, NULL},
@@ -25,6 +26,7 @@ MENU ConsoleMenu::_chapter1[] = {
 	{true, "Pyramid Down Sample", TestPyramidDown, false, NULL, ConsoleMenu::_chapters},
 	{true, "Edge Detector", TestEdgeDetector, false, NULL, ConsoleMenu::_chapters},
 	{true, "Read Write Pixel Color", TestReadWriteColor, false, NULL, ConsoleMenu::_chapters},
+	{true, "Camera input", TestCameraInput, false, NULL, ConsoleMenu::_chapters},
 	{false, "unused", NULL, false, NULL, NULL}
 };
 

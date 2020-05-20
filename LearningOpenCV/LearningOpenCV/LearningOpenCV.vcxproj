@@ -151,6 +151,7 @@
     <ClCompile Include="C1_5_PyramidDown.cpp" />
     <ClCompile Include="C1_6_EdgeDetector.cpp" />
     <ClCompile Include="C1_7_PixelColor.cpp" />
+    <ClCompile Include="C1_8_CameraInput.cpp" />
     <ClCompile Include="ConsoleMenu.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="C1_5_PyramidDown.h" />
     <ClInclude Include="C1_6_EdgeDetector.h" />
     <ClInclude Include="C1_7_PixelColor.h" />
+    <ClInclude Include="C1_8_CameraInput.h" />
     <ClInclude Include="ConsoleMenu.h" />
     <ClInclude Include="ConsoleMenuConfig.h" />
   </ItemGroup>
